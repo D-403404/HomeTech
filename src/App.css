@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gradient-fill {
+  background: linear-gradient(#8243E6, #B0C0FA);
+  background-clip: text;
+  color: transparent;
+}
