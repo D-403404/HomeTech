@@ -1,12 +1,15 @@
 import './App.css'
-// import AppRoute from './routers/Routes'
+import { Route, Routes } from "react-router-dom";
 import LoginRouter from './routers/LoginRouter'
+import AppRouter from './routers/AppRouter'
 import LoginPage from './pages/login/HomePage'
 import SignInPage from './pages/login/SignInPage'
 import SignUpPage from './pages/login/SignUpPage'
+import Sidebar from './components/sidebar/Sidebar';
+
+import AppLayout from './components/layout/AppLayout';
 
 export default function App() {
-  // return <AppRoute />
   // return (
   //   <div>
   //     {/* <LoginPage /> */}
@@ -14,5 +17,11 @@ export default function App() {
   //     {/* <SignUpPage /> */}
   //   </div>
   // )
-  return <LoginRouter />
+  return (
+    <Routes>
+      <Route exact path='/*' element={<LoginRouter />} />
+      <Route exact path='/home/*' element={<AppRouter />} />
+    </Routes>
+  )
+  // return <Sidebar />
 }
