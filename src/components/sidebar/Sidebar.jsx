@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import logo from "./../../assets/images/Logo.png";
-import icon_dashboard from "./../../assets/images/icon_dashboard.png";
-import icon_control from "./../../assets/images/icon_control.png";
-import icon_hs from "./../../assets/images/icon_hs.png";
-import icon_signout from "./../../assets/images/icon_signout.png";
+import logo from "/src/assets/images/Logo.png";
+import icon_dashboard from "/src/assets/images/icon_dashboard.png";
+import icon_control from "/src/assets/images/icon_control.png";
+import icon_hs from "/src/assets/images/icon_hs.png";
+import icon_signout from "/src/assets/images/icon_signout.png";
 
-import user from "../../assets/data/currentUser.json";
+import user from "/src/assets/data/currentUser.jsx";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
@@ -38,7 +38,7 @@ export default function Sidebar() {
   }, [location]);
 
   return (
-    <div className="sidebar overflow-hidden">
+    <div className="sidebar overflow-auto">
       <img className="h-[72.85px] mt-[16px] ml-[25px]" src={logo} />
       <div className="flex justify-center items-center mb-[20px]">
         <img className="h-[2.5em] m-[10px]" src={user.avatar} />
@@ -61,7 +61,7 @@ export default function Sidebar() {
           </Link>
         ))}
       </div>
-      <div className="ml-[40px] mt-[20px] flex items-center">
+      <div className="ml-[40px] mt-[20px] mb-[30px] flex items-center">
         <img className="h-[1.5rem] mr-[20px]" src={icon_signout} />
         <Link
           to="/"

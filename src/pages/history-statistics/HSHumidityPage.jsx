@@ -1,7 +1,9 @@
 import React from 'react'
+import StatisticsPageLayout from '/src/components/history-statistics/StatisticsPageLayout'
+import humidity from '/src/assets/data/humidity'
 
-export default function HSHumidityPage() {
+export default function HSTemperaturePage() {
   return (
-    <div>HSHumidityPage</div>
+    <StatisticsPageLayout title='Humidity' data={humidity} unit='%' />
   )
 }

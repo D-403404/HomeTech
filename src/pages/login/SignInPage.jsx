@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "./../../assets/images/Logo.png";
-import arrow from "./../../assets/images/Arrow1.png";
+import logo from "/src/assets/images/Logo.png";
+import arrow from "/src/assets/images/Arrow1.png";
 import { Link } from "react-router-dom";
 
 export default function SignInPage() {
@@ -20,7 +20,7 @@ function SignInForm() {
         <div className="flex justify-between items-center p-[15px]">
           <label className="mr-[20px] textformat text-[30px]">Username:</label>
           <input
-            className="h-[90px] w-[80vw] max-w-[569px] inputfield"
+            className="h-[90px] w-[80vw] max-w-[569px] inputfield text-[30px]"
             placeholder="Username"
             spellCheck="false"
           />
@@ -28,7 +28,7 @@ function SignInForm() {
         <div className="flex justify-between items-center p-[15px]">
           <label className="mr-[20px] textformat text-[30px]">Password:</label>
           <input
-            className="h-[90px] w-[80vw] max-w-[569px] inputfield"
+            className="h-[90px] w-[80vw] max-w-[569px] inputfield text-[30px]"
             placeholder="Password"
             spellCheck="false"
             type="password"

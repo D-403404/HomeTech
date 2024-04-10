@@ -1,7 +1,9 @@
 import React from 'react'
+import StatisticsPageLayout from '/src/components/history-statistics/StatisticsPageLayout'
+import light from '/src/assets/data/light'
 
-export default function HSLightPage() {
+export default function HSTemperaturePage() {
   return (
-    <div>HSLightPage</div>
+    <StatisticsPageLayout title='Light intensity' data={light} unit=' lx' />
   )
 }

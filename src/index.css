@@ -10,10 +10,10 @@
 
 @layer components {
   .button {
-    @apply h-[74px] w-[210px] bg-primary rounded-3xl text-white text-[25px] text-center hover:button-hovered active:button-pressed;
+    @apply h-[74px] w-[210px] bg-primary rounded-[20px] text-white text-[25px] text-center hover:button-hovered active:button-pressed;
   }
   .homebutton {
-    @apply h-[99px] w-full bg-gradient-radial from-[#FFFFFF] to-[#B1EFF8] rounded-2xl drop-shadow-md textformat text-[35px] font-sans hover:button-hovered active:button-pressed;
+    @apply h-[99px] w-full bg-gradient-radial from-[#FFFFFF] to-[#B1EFF8] rounded-[20px] drop-shadow-md textformat text-[35px] font-sans hover:button-hovered active:button-pressed;
   }
   .button-hovered {
     @apply -translate-y-1 drop-shadow-lg;
@@ -25,19 +25,31 @@
     @apply text-primary font-sans;
   }
   .inputfield {
-    @apply p-[10px] rounded-2xl border-2 border-primary text-primary text-[30px] placeholder-placeholdertext focus:outline-none;
+    @apply p-[10px] rounded-[20px] border-[1px] border-primary bg-inputfield text-primary placeholder-placeholdertext focus:outline-none;
   }
+  .selectfield {
+    @apply inputfield text-[15px];
+
+    /* Arrow */
+    appearance: none;
+    background-image: url("/src/assets/images/SelectSquare.svg");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem top 50%;
+    background-size: 20px auto;
+  }
+  
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     @apply h-[100vh] w-[348px] bg-sidebar overflow-scroll;
-    box-shadow: 5px 0px 5px 1px rgb(0 0 0 / 0.3);
+    box-shadow: 4px 0 4px 0 rgb(0 0 0 / 0.25);
+    z-index: 9999;
     /* box-shadow: x-offset y-offset density breadth */
   }
   .sidebar-item {
-    @apply h-[66.55px] w-[313.51px] rounded-2xl border-2 border-primary flex items-center textformat text-[22px] hover:text-[1.6em];
-    box-shadow: 5px 5px 5px 1px rgb(0 0 0 / 0.3);
+    @apply h-[66.55px] w-[313.51px] rounded-[20px] border-2 border-primary flex items-center textformat text-[22px] hover:text-[1.6em];
+    box-shadow: 4px 4px 4px 0 rgb(0 0 0 / 0.25);
 
     &.active {
       @apply bg-primary text-white;
@@ -49,20 +61,45 @@
   .sidebar-icon-active {
     filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(285deg) brightness(111%) contrast(101%);
   }
+
+  .table-container {
+    @apply h-[378px] w-[calc(962px-30px)] pl-[14px] pr-[38px] bg-white rounded-[20px] border-primary border-2 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] overflow-auto;
+  }
+  .table {
+    @apply min-w-[calc(full-5px)];
+  }
+  .table-header {
+    @apply sticky top-0 h-[60px] pl-[20px] z-[99] bg-white;
+  }
+  .table-header-cell {
+    @apply pb-[9px] pt-[20px] pl-[20px] text-left font-tableheader text-[18px] content-end;
+  }
+  .table-row {
+    @apply h-[60px] border-b border-bordercolor;
+  }
+  .table-row-no-border {
+    @apply h-[60px];
+  }
+  .table-cell {
+    @apply pb-[9px] pl-[20px] font-tabledata text-[18px] content-end;
+  }
 }
 
-/* .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 348px;
-  filter: drop-shadow(0 10px 0 0 rgb(0 0 0 / 0.04));
-  
-  &__menu {
+/* Rectangle 21
 
-  }
-} */
+box-sizing: border-box;
+
+position: absolute;
+width: 962px;
+height: 378px;
+left: 397px;
+top: 106px;
+
+background: #FFFFFF;
+border: 2px solid #3A53A9;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px; */
+
 
 @layer utilities {
   

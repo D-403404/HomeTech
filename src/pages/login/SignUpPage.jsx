@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "./../../assets/images/Logo.png";
-import arrow from "./../../assets/images/Arrow1.png";
+import logo from "/src/assets/images/Logo.png";
+import arrow from "/src/assets/images/Arrow1.png";
 import { Link } from "react-router-dom";
 
 export default function SignUpPage() {
@@ -32,7 +32,7 @@ function SignUpForm() {
             Phone number:
           </label>
           <input
-            className="h-[90px] w-[80vw] max-w-[703px] inputfield"
+            className="h-[90px] w-[80vw] max-w-[703px] inputfield text-[30px]"
             placeholder="Phone number"
             type="phone"
             required
@@ -86,7 +86,7 @@ function InputField({ title, placeholder, type }) {
     <div className="flex justify-between items-center p-[29px]">
       <label className="w-[230px] textformat text-[30px]">{title}</label>
       <input
-        className="h-[90px] w-[80vw] max-w-[703px] inputfield"
+        className="h-[90px] w-[80vw] max-w-[703px] inputfield text-[30px]"
         placeholder={placeholder}
         type={type}
         required

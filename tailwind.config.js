@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import defaultTheme from "tailwindcss/defaultTheme";
 export default {
   mode: 'jit',
   content: [
@@ -14,9 +15,13 @@ export default {
         sidebar: '#E7EFF9',
         inputfield: '#F3EEEE',
         placeholdertext: '#837C7C',
+        bordercolor: '#9A8C8C',
       },
       fontFamily: {
-        main: ['Actor'],
+        // main: ['Actor'],
+        sans: ['Actor', ...defaultTheme.fontFamily.sans],
+        tableheader: ['Alef', ...defaultTheme.fontFamily.sans],
+        tabledata: ['Anaheim', ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
