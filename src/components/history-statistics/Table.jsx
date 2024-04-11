@@ -30,7 +30,7 @@ export default function Table({ headers, data }) {
               <td className="table-cell">HomeTech.{row.device}</td>
               <td className="table-cell">
                 {row.timestamp.getDate().toString().padStart(2, "0")}/
-                {row.timestamp.getMonth().toString().padStart(2, "0")}/
+                {(row.timestamp.getMonth() + 1).toString().padStart(2, "0")}/
                 {row.timestamp.getFullYear().toString().padStart(2, "0")}{" "}
                 {row.timestamp.getHours().toString().padStart(2, "0")}:
                 {row.timestamp.getMinutes().toString().padStart(2, "0")}:

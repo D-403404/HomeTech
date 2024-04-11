@@ -1,6 +1,6 @@
 const temperature = [
     {
-        date: new Date('2024-04-01').setHours(0,0,0,0),
+        date: new Date('2024-04-01T00:00:00'),
         data: [
             {
                 time: '00:00',
@@ -13,7 +13,7 @@ const temperature = [
         ],
     },
     {
-        date: new Date('2024-04-03').setHours(0,0,0,0),
+        date: new Date('2024-04-03T00:00:00'),
         data: [
             {
                 time: '14:37',

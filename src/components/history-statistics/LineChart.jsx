@@ -1,7 +1,13 @@
 import React from "react";
 import Chart from "react-apexcharts";
 
-export default function LineChart({ title, data, categories, linecolor, unit }) {
+export default function LineChart({
+  title,
+  data,
+  categories,
+  linecolor,
+  unit,
+}) {
   const series = [
     {
       name: title,
@@ -44,8 +50,10 @@ export default function LineChart({ title, data, categories, linecolor, unit }) 
       },
     },
     yaxis: {
-      stepSize: `${title === 'Temperature' ? 1 : 10}`,
+      stepSize: `${title === "Temperature" ? 1 : 10}`,
       decimalsInFloat: 0,
+      // min: (data.length === 0 ? 0 : Math.min(...data)),
+      // max: (data.length === 0 ? 0 : Math.max(...data)),
       axisTicks: {
         show: true,
         borderType: "solid",

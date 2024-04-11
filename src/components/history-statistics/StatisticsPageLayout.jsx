@@ -1,21 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReturnButton from "/src/components/history-statistics/ReturnButton";
 
 import DateInputField from "./DateInputField";
 import LineChart from "./LineChart";
 
 export default function StatisticsPageLayout({ title, data, unit }) {
-  const [displayDate, setDisplayDate] = useState(
-    new Date("2024-04-03").setHours(0, 0, 0, 0)
-  );
-  const [displayData, setDisplayData] = useState(findDate(data, displayDate));
-  const rawData = [...displayData.map((row) => row.value)];
-  const time = [...displayData.map((row) => row.time)]
+  const defaultDate = new Date("2024-04-03T00:00:00");
+  // console.log(defaultDate);
+  // console.log(defaultDate.getDate().toString().padStart(2, "0"));
+  // console.log((defaultDate.getMonth() + 1).toString().padStart(2, "0"));
+  // console.log(defaultDate.getFullYear().toString());
 
-  const [average, setAverage] = useState(findAverage(rawData));
-  const [peak, setPeak] = useState(findPeak(rawData));
+  const [displayDate, setDisplayDate] = useState(defaultDate);
+  const [displayData, setDisplayData] = useState(findDate(data, displayDate));
+  const rawData = ((displayData == []) ? [] : [...displayData.map((row) => row.value)]);
+  const time = ((displayData == []) ? [] : [...displayData.map((row) => row.time)]);
+
+  console.log(displayData);
+  console.log(rawData);
+  // const [average, setAverage] = useState(findAverage(rawData));
+  // const [peak, setPeak] = useState(findPeak(rawData));
+  const average = findAverage(rawData);
+  const peak = findPeak(rawData);
   console.log(average);
   console.log(peak);
+
+  useEffect(() => {
+    setDisplayData(findDate(data, displayDate));
+  }, [displayDate]);
+
+  // useEffect(() => {
+  //   setAverage(findAverage(rawData));
+  //   setPeak(findPeak(rawData));
+  // }, [rawData]);
+
   return (
     <div className="">
       <div className="relative min-h-[100vh] min-w-[1001px] bg-background">
@@ -37,7 +55,14 @@ export default function StatisticsPageLayout({ title, data, unit }) {
           />
           <div className="pl-[78px] pr-[50.5px] pt-[48px] pb-[40px] flex items-center">
             <div className="pt-[30px]">
-              <DateInputField label="Date:" type="date" />
+              <DateInputField
+                label="Date:"
+                type="date"
+                default_1={defaultDate.getDate().toString().padStart(2, "0")}
+                default_2={(defaultDate.getMonth() + 1).toString().padStart(2, "0")}
+                default_3={defaultDate.getFullYear().toString()}
+                setValue={setDisplayDate}
+              />
             </div>
             <div className="px-[36.5px] flex flex-col items-center textformat">
               <div className="text-[20px]">AVERAGE</div>
@@ -62,15 +87,25 @@ export default function StatisticsPageLayout({ title, data, unit }) {
 
 function findDate(data, displayDate) {
   for (let i = 0; i < data.length; i++) {
-    if (data[i].date === displayDate) return data[i].data;
+    if (
+      data[i].date.getDate() === displayDate.getDate() &&
+      data[i].date.getMonth() === displayDate.getMonth() &&
+      data[i].date.getYear() === displayDate.getYear()
+    ) {
+      console.log('Match: ' + data[i])
+      return data[i].data;
+    }
   }
   return [];
 }
 
 function findAverage(data) {
+  if (data.length === 0) return NaN;
+  console.log(data)
   return data.reduce((a, b) => a + b) / data.length;
 }
 
 function findPeak(data) {
+  if (data.length === 0) return NaN;
   return Math.max(...data);
 }

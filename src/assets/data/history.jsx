@@ -41,6 +41,18 @@ const history = [
         type: "Humidity",
         value: 48.4,
     },
+    {
+        device: "LightSensor",
+        timestamp: new Date('2024-04-06T15:30:39'),
+        type: "Light intensity",
+        value: 55,
+    },
+    {
+        device: "DHT20",
+        timestamp: new Date('2024-05-01T15:30:39'),
+        type: "Light intensity",
+        value: 55,
+    },
 ];
 
 export default history;

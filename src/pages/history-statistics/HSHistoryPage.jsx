@@ -38,34 +38,62 @@ function Filter({ data, setData }) {
   const [device, setDevice] = useState("All");
   const [type, setType] = useState("All");
 
-  const [startDay, setStartDay] = useState(1);
-  const [startMonth, setStartMonth] = useState(1);
-  const [startYear, setStartYear] = useState(2000);
-  const [endDay, setEndDay] = useState(1);
-  const [endMonth, setEndMonth] = useState(1);
-  const [endYear, setEndYear] = useState(2000);
+  const [startDate, setStartDate] = useState(new Date("2000-01-01T00:00:00"));
+  const [endDate, setEndDate] = useState(new Date("2100-12-31T00:00:00"));
+  const [startTime, setStartTime] = useState("00:00:00");
+  const [endTime, setEndTime] = useState("23:59:59");
 
-  const [startHour, setStartHour] = useState(0);
-  const [startMinute, setStartMinute] = useState(0);
-  const [startSecond, setStartSecond] = useState(0);
-  const [endHour, setEndHour] = useState(0);
-  const [endMinute, setEndMinute] = useState(0);
-  const [endSecond, setEndSecond] = useState(0);
+  // const [startDay, setStartDay] = useState(1);
+  // const [startMonth, setStartMonth] = useState(1);
+  // const [startYear, setStartYear] = useState(2000);
+  // const [endDay, setEndDay] = useState(1);
+  // const [endMonth, setEndMonth] = useState(1);
+  // const [endYear, setEndYear] = useState(2000);
+
+  // const [startHour, setStartHour] = useState(0);
+  // const [startMinute, setStartMinute] = useState(0);
+  // const [startSecond, setStartSecond] = useState(0);
+  // const [endHour, setEndHour] = useState(0);
+  // const [endMinute, setEndMinute] = useState(0);
+  // const [endSecond, setEndSecond] = useState(0);
+
+  console.log(data);
+  console.log("startDate: " + startDate);
+  console.log("endDate: " + endDate);
 
   useEffect(() => {
     setData(
       data.filter((row) => {
+        // console.log("timestamp: " + row.timestamp);
+        // console.log("startDate: " + startDate);
+        // console.log("endDate: " + endDate);
+        const startTimestamp = new Date(
+          `${startDate.getFullYear()}-${(startDate.getMonth() + 1)
+            .toString()
+            .padStart(2, "0")}-${startDate
+            .getDate()
+            .toString()
+            .padStart(2, "0")}T${startTime}`
+        );
+        const endTimestamp = new Date(
+          `${endDate.getFullYear()}-${(endDate.getMonth() + 1)
+            .toString()
+            .padStart(2, "0")}-${endDate
+            .getDate()
+            .toString()
+            .padStart(2, "0")}T${endTime}`
+        );
+        // console.log("startTimestamp: " + startTimestamp);
+        // console.log("endTimestamp: " + endTimestamp);
         return (
           (device === "All" ? true : row.device === device) &&
-          (type === "All" ? true : row.type === type)
+          (type === "All" ? true : row.type === type) &&
+          row.timestamp >= startTimestamp &&
+          row.timestamp <= endTimestamp
         );
       })
     );
-    console.log(device);
-    console.log(type);
-    console.log(deviceOptions);
-    console.log(typeOptions);
-  }, [device, type]);
+  }, [device, type, startDate, endDate, startTime, endTime]);
 
   return (
     <div className="">
@@ -83,12 +111,44 @@ function Filter({ data, setData }) {
         </select>
       </div>
       <div className="flex items-center py-[8px]">
-        <DateInputField label="Start date:" type="date" />
-        <DateInputField label="End date:" type="date" />
+        <DateInputField
+          label="Start date:"
+          type="date"
+          default_1="01"
+          default_2="01"
+          default_3="2000"
+          value={startDate}
+          setValue={setStartDate}
+        />
+        <DateInputField
+          label="End date:"
+          type="date"
+          default_1="31"
+          default_2="12"
+          default_3="2100"
+          value={endDate}
+          setValue={setEndDate}
+        />
       </div>
       <div className="flex items-center py-[8px]">
-        <DateInputField label="Start time:" type="time" />
-        <DateInputField label="End time:" type="time" />
+        <DateInputField
+          label="Start time:"
+          type="time"
+          default_1="00"
+          default_2="00"
+          default_3="00"
+          value={startTime}
+          setValue={setStartTime}
+        />
+        <DateInputField
+          label="End time:"
+          type="time"
+          default_1="23"
+          default_2="59"
+          default_3="59"
+          value={endTime}
+          setValue={setEndTime}
+        />
       </div>
       <div className="flex items-center py-[8px]">
         <div className="pr-[6px] textformat text-[20px]">Measurement type:</div>
