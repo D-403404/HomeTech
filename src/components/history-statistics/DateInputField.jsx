@@ -49,8 +49,8 @@ export default function DateInputField({
   }, [value_1, value_2, value_3]);
 
   return (
-    <div className="w-[calc(283px+38px)] flex items-center pr-[38px]">
-      <div className="pr-[6px] textformat text-[20px]">{label}</div>
+    <div className="w-[calc(283px+38px)] flex items-center #pr-[38px]">
+      <div className={label === "Date:" ? "w-[61px] #pr-[6px] textformat text-[20px]" : "w-[96px] #pr-[6px] textformat text-[20px]"}>{label}</div>
       <div className="flex items-center textformat text-[20px]">
         <input
           className="h-[40px] w-[49px] inputfield"

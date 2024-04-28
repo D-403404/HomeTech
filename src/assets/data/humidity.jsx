@@ -60,7 +60,16 @@ const humidity = [
                 value: 29.3,
             },
         ]
-    }
+    },
+    {
+        date: new Date(),
+        data: [
+            {
+                time: '00:00',
+                value: 53,
+            },
+        ],
+    },
 ];
 
 export default humidity;

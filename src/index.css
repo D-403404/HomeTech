@@ -2,18 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-}
+} */
 
 @layer components {
   .button {
     @apply h-[74px] w-[210px] bg-primary rounded-[20px] text-white text-[25px] text-center hover:button-hovered active:button-pressed;
   }
   .homebutton {
-    @apply h-[99px] w-full bg-gradient-radial from-[#FFFFFF] to-[#B1EFF8] rounded-[20px] drop-shadow-md textformat text-[35px] font-sans hover:button-hovered active:button-pressed;
+    @apply h-[99px] w-full bg-gradient-radial from-[#FFFFFF] to-[#B1EFF8] rounded-[20px] drop-shadow-md textformat text-[35px] font-main hover:button-hovered active:button-pressed;
   }
   .button-hovered {
     @apply -translate-y-1 drop-shadow-lg;
@@ -22,10 +22,13 @@
     @apply translate-y-0 drop-shadow-xl;
   }
   .textformat {
-    @apply text-primary font-sans;
+    @apply text-primary font-main;
+  }
+  .textwarning {
+    @apply text-[25px] text-warning;
   }
   .inputfield {
-    @apply p-[10px] rounded-[20px] border-[1px] border-primary bg-inputfield text-primary align-middle placeholder-placeholdertext focus:outline-none;
+    @apply p-[10px] rounded-[20px] border-[1px] border-primary bg-inputfield text-primary font-[Anaheim] align-middle placeholder-placeholdertext focus:outline-none;
   }
   .selectfield {
     @apply inputfield text-[15px];
@@ -82,6 +85,17 @@
   }
   .table-cell {
     @apply pb-[9px] pl-[20px] font-tabledata text-[18px] content-end;
+  }
+
+  /* for svg */
+  .arc {
+    height: 506px;
+    width: 506px;
+    background: conic-gradient(from 146.71deg at 50.12% 46.54%, #FF0E0E -13.72deg, #2659DC 84.39deg, #FF0E0E 346.28deg, #2659DC 444.39deg);
+    border-radius: 20px;
+  }
+  .dot {
+    @apply h-[85px] w-[85px] rounded-[50%] border-[5px] border-primary bg-[#FFFDFD]
   }
 }
 

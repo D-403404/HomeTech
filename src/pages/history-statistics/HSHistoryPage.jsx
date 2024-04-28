@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import history from "/src/assets/data/history.jsx";
 import Table from "/src/components/history-statistics/Table";
-import ReturnButton from "/src/components/history-statistics/ReturnButton";
+import ReturnButton from "/src/components/general/ReturnButton";
 import DateInputField from "/src/components/history-statistics/DateInputField";
 
 export default function HSHistoryPage() {
@@ -16,12 +16,12 @@ export default function HSHistoryPage() {
   return (
     <div className="">
       <div className="relative min-h-[100vh] min-w-[1001px] bg-background">
-        <ReturnButton />
+        <ReturnButton link={"/home/history-statistics"} />
         <div className="pl-[40px] pt-[35px]">
           <div className="textformat text-[30px] mb-[40px]">History</div>
           <Table headers={headers} data={data} />
           <div className="flex items-center pt-[40px] pb-[20px]">
-            <div className="text-[#627DD9] font-sans text-[30px]">Filter</div>
+            <div className="text-[#627DD9] font-main text-[30px]">Filter</div>
             <div className="h-[207.5px] w-0 mx-[17px] border-l-[1px] border-bordercolor"></div>
             <Filter data={history} setData={setData} />
           </div>

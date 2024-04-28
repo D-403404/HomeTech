@@ -7,7 +7,7 @@ export default function SignInPage() {
   return (
     <div className="min-h-[100vh] min-w-[900px] bg-background flex flex-col justify-center items-center">
       <img className="h-[110px] mb-[10px] pr-[90px]" src={logo} />
-      <div className="textformat text-[55px] font-sans">SIGN IN</div>
+      <div className="textformat text-[55px] font-main">SIGN IN</div>
       <SignInForm />
     </div>
   );
@@ -35,7 +35,9 @@ function SignInForm() {
           />
         </div>
         <div className="flex justify-center mt-[30px]">
-          <button className="button">Sign in</button>
+          <Link to="/home/dashboard">
+            <button className="button">Sign in</button>
+          </Link>
         </div>
       </form>
       <div className="flex justify-center">

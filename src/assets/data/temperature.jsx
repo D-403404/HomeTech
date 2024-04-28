@@ -60,7 +60,24 @@ const temperature = [
                 value: 29.3,
             },
         ]
-    }
+    },
+    {
+        date: new Date(),
+        data: [
+            {
+                time: '00:00',
+                value: 20,
+            },
+            {
+                time: '00:30',
+                value: 21,
+            },
+            {
+                time: '15:00',
+                value: 39.5,
+            },
+        ],
+    },
 ];
 
 export default temperature;

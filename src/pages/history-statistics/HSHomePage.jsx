@@ -62,7 +62,7 @@ function Button({ item }) {
     <Link to={item.to}>
       <button className={`${item.color} h-[156.96px] w-[251px] rounded-[20px] flex flex-col justify-center items-center shadow-[6px_6px_4px_0_rgba(0,0,0,0.25)] hover:scale-[1.1]`}>
         <img className="" src={item.icon} />
-        <div className="text-[30px]">{item.display}</div>
+        <div className="font-[Actor] text-[30px]">{item.display}</div>
       </button>
     </Link>
   );

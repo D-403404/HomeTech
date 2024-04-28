@@ -7,7 +7,7 @@ export default function SignUpPage() {
   return (
     <div className="min-h-[100vh] min-w-[900px] bg-background flex flex-col justify-center items-center">
       <img className="h-[110px] mb-[10px] mt-[36px] pr-[90px]" src={logo} />
-      <div className="textformat text-[55px] font-sans">SIGN UP</div>
+      <div className="textformat text-[55px] font-main">SIGN UP</div>
       <SignUpForm />
     </div>
   );
@@ -64,7 +64,9 @@ function SignUpForm() {
           type={"password"}
         />
         <div className="flex justify-center mt-[30px]">
-          <button className="button">Sign up</button>
+          <Link to="/home/dashboard">
+            <button className="button">Sign up</button>
+          </Link>
         </div>
       </form>
       <div className="flex justify-center mb-[36px]">
