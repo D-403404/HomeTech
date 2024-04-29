@@ -15,7 +15,7 @@ export default function DashboardHomePage() {
     {
       icon: icon_temperature,
       display: "Temperature",
-      color: "bg-gradient-to-b from-[#F3D2BF] to-[#DA9067]",
+      color: "color-temperature",
       to: "/home/dashboard/temperature",
       data: temperature,
       unit: "°C"
@@ -23,7 +23,7 @@ export default function DashboardHomePage() {
     {
       icon: icon_humidity,
       display: "Humidity",
-      color: "bg-gradient-to-b from-[#C6EEF3] to-[#69B0BF]",
+      color: "color-humidity",
       to: "/home/dashboard/humidity",
       data: humidity,
       unit: "%"
@@ -105,7 +105,7 @@ function Button({ item, today }) {
           <img className="" src={item.icon} />
         </div>
         <div className="w-[131.93px] flex flex-col justify-center items-center">
-          <div className="font-[Actor] text-[22px]">{item.display}</div>
+          <div className="font-main text-[22px]">{item.display}</div>
           <div className="font-[Adamina] text-[42px]">
             {containsToday() !== null
               ? item.data[containsToday()].data.length > 0

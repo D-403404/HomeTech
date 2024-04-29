@@ -24,6 +24,9 @@
   .textformat {
     @apply text-primary font-main;
   }
+  .textformat-control {
+    @apply text-control font-main;
+  }
   .textwarning {
     @apply text-[25px] text-warning;
   }
@@ -40,7 +43,26 @@
     background-position: right 0.7rem top 50%;
     background-size: 20px auto;
   }
-  
+
+  .color-history {
+    @apply bg-gradient-to-b from-[#DCFECB] to-[#92C57A];
+  }
+  .color-temperature {
+    @apply bg-gradient-to-b from-[#F3D2BF] from-[30%] to-[#DA9067];
+  }
+  .color-humidity {
+    @apply bg-gradient-to-b from-[#C6EEF3] from-[30%] to-[#69B0BF];
+  }
+  .color-light {
+    @apply bg-gradient-to-b from-[#FDFED2] from-[30%] to-[#C1DC54];
+  }
+  .color-lightbulb {
+    @apply bg-gradient-to-b from-[#F5F7B7] from-[30%] to-[#899831];
+  }
+  .color-fan {
+    @apply bg-gradient-to-b from-[#FFF4CD] from-[30%] to-[#B69045]
+  }
+
   .sidebar {
     position: fixed;
     top: 0;

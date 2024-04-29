@@ -26,14 +26,14 @@ export default function DashboardPageLayout({
         <div className="pl-[40px] textformat text-[40px] mb-[15px]">
           {title}
         </div>
-        <Chart Arc={Arc} range={range} value={value} unit={unit} />
+        <Graphic Arc={Arc} range={range} value={value} unit={unit} />
         {value !== null && (value < safeRange[0] || value > safeRange[1]) && (
           <div className="pl-[50px] textwarning">
             <span className="font-[Alata]">
               <span className="underline">Warning</span>
               <span>:</span>
             </span>
-            <span className="font-[Actor]"> {msg}</span>
+            <span className="font-main"> {msg}</span>
           </div>
         )}
       </div>
@@ -41,7 +41,7 @@ export default function DashboardPageLayout({
   );
 }
 
-function Chart({ Arc, range, value, unit }) {
+function Graphic({ Arc, range, value, unit }) {
   const [angle, setAngle] = useState(45);
 
   function angleFromValue() {

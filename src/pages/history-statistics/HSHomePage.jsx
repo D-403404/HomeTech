@@ -11,7 +11,7 @@ export default function HSHomePage() {
     {
       icon: icon_history,
       display: "History",
-      color: "bg-gradient-to-b from-[#DCFECB] to-[#92C57A]",
+      color: "color-history",
       to: "/home/history-statistics/history",
     },
   ];
@@ -19,19 +19,19 @@ export default function HSHomePage() {
     {
       icon: icon_temperature,
       display: "Temperature",
-      color: "bg-gradient-to-b from-[#F3D2BF] to-[#DA9067]",
+      color: "color-temperature",
       to: "/home/history-statistics/temperature",
     },
     {
       icon: icon_humidity,
       display: "Humidity",
-      color: "bg-gradient-to-b from-[#C6EEF3] to-[#69B0BF]",
+      color: "color-humidity",
       to: "/home/history-statistics/humidity",
     },
     {
       icon: icon_light,
       display: "Light",
-      color: "bg-gradient-to-b from-[#FDFED2] to-[#C1DC54]",
+      color: "color-light",
       to: "/home/history-statistics/light",
     },
   ];
@@ -62,7 +62,7 @@ function Button({ item }) {
     <Link to={item.to}>
       <button className={`${item.color} h-[156.96px] w-[251px] rounded-[20px] flex flex-col justify-center items-center shadow-[6px_6px_4px_0_rgba(0,0,0,0.25)] hover:scale-[1.1]`}>
         <img className="" src={item.icon} />
-        <div className="font-[Actor] text-[30px]">{item.display}</div>
+        <div className="font-main text-[30px]">{item.display}</div>
       </button>
     </Link>
   );

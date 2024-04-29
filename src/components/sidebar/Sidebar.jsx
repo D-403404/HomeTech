@@ -34,8 +34,8 @@ export default function Sidebar() {
     const curPath = window.location.pathname.split('/')[2];
     const idx = sidebarItems.findIndex(item => item.section === curPath);
     setActiveIndex(idx);
-    console.log(activeIndex)
-  }, [location]);
+    console.log(activeIndex);
+  }, [window.location.pathname]);
 
   return (
     <div className="sidebar overflow-auto">

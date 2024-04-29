@@ -16,7 +16,11 @@ export default {
         inputfield: '#F3EEEE',
         placeholdertext: '#837C7C',
         bordercolor: '#9A8C8C',
-        warning: '#FF0000'
+        warning: '#FF0000',
+        control: '#627DD9',
+        red: '#FF0000',
+        green: '#00FF00',
+        blue: '#0000FF',
       },
       fontFamily: {
         // main: ['Actor'],
@@ -25,6 +29,7 @@ export default {
         tabledata: ['Anaheim', ...defaultTheme.fontFamily.sans],
         time: ['Adamina', ...defaultTheme.fontFamily.serif],
         date: defaultTheme.fontFamily.sans,
+        control: ['"Advent Pro"', ...defaultTheme.fontFamily.serif],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
