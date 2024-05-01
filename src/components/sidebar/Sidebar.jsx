@@ -34,7 +34,7 @@ export default function Sidebar() {
     const curPath = window.location.pathname.split('/')[2];
     const idx = sidebarItems.findIndex(item => item.section === curPath);
     setActiveIndex(idx);
-    console.log(activeIndex);
+    console.log(window.location.pathname);
   }, [window.location.pathname]);
 
   return (

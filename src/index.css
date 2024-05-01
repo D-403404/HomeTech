@@ -9,11 +9,15 @@
 } */
 
 @layer components {
+  .shadowed {
+    @apply shadow-[0_4px_4px_0_rgba(0,0,0,0.25)];
+  }
+
   .button {
     @apply h-[74px] w-[210px] bg-primary rounded-[20px] text-white text-[25px] text-center hover:button-hovered active:button-pressed;
   }
   .homebutton {
-    @apply h-[99px] w-full bg-gradient-radial from-[#FFFFFF] to-[#B1EFF8] rounded-[20px] drop-shadow-md textformat text-[35px] font-main hover:button-hovered active:button-pressed;
+    @apply h-[99px] w-full bg-gradient-radial from-[#FFFFFF] to-[#B1EFF8] rounded-[20px] shadowed textformat text-[35px] font-main hover:button-hovered active:button-pressed;
   }
   .button-hovered {
     @apply -translate-y-1 drop-shadow-lg;
@@ -123,23 +127,26 @@
   .warning {
     @apply h-[19rem] w-[53.5rem] fixed top-[calc(50%-9.5rem)] left-[calc(50%-26.75rem)] border-primary border-[3px] rounded-[20px] bg-white flex items-center;
   }
+
+  button[disabled=disabled], button:disabled {
+    @apply bg-disabled
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .spinning {
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
 }
-
-/* Rectangle 21
-
-box-sizing: border-box;
-
-position: absolute;
-width: 962px;
-height: 378px;
-left: 397px;
-top: 106px;
-
-background: #FFFFFF;
-border: 2px solid #3A53A9;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 20px; */
-
 
 @layer utilities {
   

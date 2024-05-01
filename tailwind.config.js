@@ -11,6 +11,7 @@ export default {
       colors: {
         background: '#EDFCFF',
         primary: '#3A53A9',
+        disabled: '#C3D0FC',
         // 'signin-button': '#C6F5FB',
         sidebar: '#E7EFF9',
         inputfield: '#F3EEEE',

@@ -4,6 +4,7 @@ import ToggleSwitch from "/src/components/control/ToggleSwitch";
 import ColorPalette from "/src/components/control/ColorPalette";
 import icon_light from "/src/assets/images/icon_light.png";
 
+import Sidebar from "/src/components/sidebar/Sidebar";
 import { Link } from "react-router-dom";
 
 export default function ControlLightPage() {
@@ -41,19 +42,6 @@ export default function ControlLightPage() {
   const [blue, setBlue] = useState(hex_to_rgb(color).blue.toString());
   const [mode, setMode] = useState(false);
   const [hex, setHex] = useState(color);
-
-  // console.log(defaultColor);
-  // console.log(hex);
-
-  // useEffect(() => {
-  //   console.log(red);
-  //   console.log(green);
-  //   console.log(blue);
-  // }, [red, green, blue]);
-
-  // useEffect(() => {
-  //   console.log(hex);
-  // }, [hex]);
 
   const item = {
     icon: icon_light,

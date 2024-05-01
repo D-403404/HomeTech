@@ -9,9 +9,9 @@ export default function Table({ headers, data }) {
           <tr className="">
             {headers.map((header, headerIndex) => (
               <th key={headerIndex} width={header[1]} className="p-0">
-                <th key={headerIndex} className="table-header-cell">
+                <div className="table-header-cell">
                   {header[0]}
-                </th>
+                </div>
                 <div className="h-0 min-w-full border-b-[1px] border-bordercolor shadow-[0_4px_6px_0_rgba(0,0,0,0.53)]"></div>
               </th>
             ))}

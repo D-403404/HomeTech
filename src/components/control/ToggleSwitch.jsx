@@ -2,7 +2,7 @@ import React from "react";
 import Switch from "react-switch";
 import SwitchIcon from "/src/assets/images/SwitchIcon.svg";
 
-export default function ToggleSwitch({ className, title, value, setValue }) {
+export default function ToggleSwitch({ className, switchClassName, title, value, setValue }) {
   return (
     <div className={`${className} flex flex-col justify-center items-center`}>
       <div className="textformat-control text-[32px]">{title}</div>
@@ -23,7 +23,7 @@ export default function ToggleSwitch({ className, title, value, setValue }) {
           checkedHandleIcon={<div className="h-full w-full border-[1px] border-primary rounded-[50%] flex justify-center items-center"><img src={SwitchIcon} /></div>}
           uncheckedIcon={false}
           checkedIcon={false}
-          className="mx-[10px] border-[1px] border-primary"
+          className={`${switchClassName} mx-[10px] border-[1px] border-primary`}
         />
         <div className="textformat-control text-[20px]">On</div>
       </div>
