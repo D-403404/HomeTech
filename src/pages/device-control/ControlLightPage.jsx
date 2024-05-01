@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 
 export default function ControlLightPage() {
   function rgb_to_hex(red, green, blue) {
-    const redPart = red.toString(16).padStart(2, "0");
-    const greenPart = green.toString(16).padStart(2, "0");
-    const bluePart = blue.toString(16).padStart(2, "0");
-    console.log(redPart)
-    console.log(greenPart)
-    console.log(bluePart)
+    const redPart = parseInt(red).toString(16).padStart(2, "0");
+    const greenPart = parseInt(green).toString(16).padStart(2, "0");
+    const bluePart = parseInt(blue).toString(16).padStart(2, "0");
+    console.log(redPart);
+    console.log(greenPart);
+    console.log(bluePart);
     return (redPart + greenPart + bluePart).toUpperCase();
   }
 
@@ -28,13 +28,19 @@ export default function ControlLightPage() {
   const [auto, setAuto] = useState(false);
 
   const defaultColor = { red: 37, green: 169, blue: 247 };
-  const [red, setRed] = useState(defaultColor.red);
-  const [green, setGreen] = useState(defaultColor.green);
-  const [blue, setBlue] = useState(defaultColor.blue);
-  const [mode, setMode] = useState(false);
-  const [hex, setHex] = useState(
-    rgb_to_hex(defaultColor.red, defaultColor.green, defaultColor.blue)
+  const [color, setColor] = useState(
+    rgb_to_hex(
+      defaultColor.red.toString(),
+      defaultColor.green.toString(),
+      defaultColor.blue.toString()
+    )
   );
+
+  const [red, setRed] = useState(hex_to_rgb(color).red.toString());
+  const [green, setGreen] = useState(hex_to_rgb(color).green.toString());
+  const [blue, setBlue] = useState(hex_to_rgb(color).blue.toString());
+  const [mode, setMode] = useState(false);
+  const [hex, setHex] = useState(color);
 
   // console.log(defaultColor);
   // console.log(hex);
@@ -103,6 +109,8 @@ export default function ControlLightPage() {
               setMode={setMode}
               hex={hex}
               setHex={setHex}
+              color={color}
+              setColor={setColor}
             />
           </div>
         </div>

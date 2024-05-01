@@ -119,6 +119,10 @@
   .dot {
     @apply h-[85px] w-[85px] rounded-[50%] border-[5px] border-primary bg-[#FFFDFD]
   }
+
+  .warning {
+    @apply h-[19rem] w-[53.5rem] fixed top-[calc(50%-9.5rem)] left-[calc(50%-26.75rem)] border-primary border-[3px] rounded-[20px] bg-white flex items-center;
+  }
 }
 
 /* Rectangle 21

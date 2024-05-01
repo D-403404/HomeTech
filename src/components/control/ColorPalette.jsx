@@ -1,5 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Switch from "react-switch";
+import RGBWarning from "/src/components/general/RGBWarning";
+import HexWarning from "/src/components/general/HexWarning";
+
+class OutOfRange extends Error {
+  constructor(msg) {
+    super(msg);
+    this.name = "OutOfRange";
+  }
+}
+
+class InvalidHexFormat extends Error {
+  constructor(msg) {
+    super(msg);
+    this.name = "InvalidHexFormat";
+  }
+}
 
 export default function ColorPalette({
   rgb_to_hex,
@@ -16,7 +32,12 @@ export default function ColorPalette({
   setMode,
   hex,
   setHex,
+  color,
+  setColor,
 }) {
+  const [rgbError, setRgbError] = useState(false);
+  const [hexError, setHexError] = useState(false);
+
   return (
     <div>
       <div className="flex justify-center textformat-control text-[32px]">
@@ -26,7 +47,7 @@ export default function ColorPalette({
         <div className="h-full w-[50%] flex justify-center items-center">
           <div
             className="w-[233px] aspect-[1/1] border-[1px] border-primary rounded-[50%]"
-            style={{ backgroundColor: `#${hex}` }}
+            style={{ backgroundColor: `#${color}` }}
           ></div>
         </div>
         <div className="h-full w-[50%] flex flex-col">
@@ -37,6 +58,7 @@ export default function ColorPalette({
             {!mode ? (
               <RGBInput
                 rgb_to_hex={rgb_to_hex}
+                hex_to_rgb={hex_to_rgb}
                 defaultColor={defaultColor}
                 red={red}
                 setRed={setRed}
@@ -45,9 +67,13 @@ export default function ColorPalette({
                 blue={blue}
                 setBlue={setBlue}
                 setHex={setHex}
+                color={color}
+                setColor={setColor}
+                setError={setRgbError}
               />
             ) : (
               <HexInput
+                rgb_to_hex={rgb_to_hex}
                 hex_to_rgb={hex_to_rgb}
                 defaultHex={defaultHex}
                 hex={hex}
@@ -55,11 +81,16 @@ export default function ColorPalette({
                 setRed={setRed}
                 setGreen={setGreen}
                 setBlue={setBlue}
+                color={color}
+                setColor={setColor}
+                setError={setHexError}
               />
             )}
           </div>
         </div>
       </div>
+      {rgbError && <RGBWarning setError={setRgbError} />}
+      {hexError && <HexWarning setError={setHexError} />}
     </div>
   );
 }
@@ -94,6 +125,7 @@ function ModeSwitch({ className, value, setValue }) {
 
 function RGBInput({
   rgb_to_hex,
+  hex_to_rgb,
   defaultColor,
   red,
   setRed,
@@ -102,21 +134,35 @@ function RGBInput({
   blue,
   setBlue,
   setHex,
+  color,
+  setColor,
+  setError,
 }) {
+  function checkInput(str) {
+    if (!/^[0-9]+$/.test(str) || parseInt(str) > 255) throw new OutOfRange();
+  }
+
   return (
     <div className="flex flex-col">
       <div className="p-[11px] flex items-center">
         <div className="w-[58px] text-red font-main text-[20px]">Red</div>
         <input
           className="h-[40px] w-[73px] px-[20px] inputfield text-main font-control font-bold text-[20px] text-right border-red"
-        //   defaultValue={defaultColor.red}
+          //   defaultValue={defaultColor.red}
           value={red}
           onChange={(event) => {
-            setRed(parseInt(event.target.value));
+            setRed(event.target.value);
           }}
           onBlur={(event) => {
-            setRed(parseInt(event.target.value));
-            setHex(rgb_to_hex(red, green, blue));
+            try {
+              checkInput(red);
+              setHex(rgb_to_hex(red, green, blue));
+              setColor(rgb_to_hex(red, green, blue));
+            } catch (error) {
+              console.log(error);
+              setError(true);
+              setRed(hex_to_rgb(color).red.toString());
+            }
           }}
         />
       </div>
@@ -124,14 +170,21 @@ function RGBInput({
         <div className="w-[58px] text-green font-main text-[20px]">Green</div>
         <input
           className="h-[40px] w-[73px] px-[20px] inputfield text-main font-control font-bold text-[20px] text-right border-green"
-        //   defaultValue={defaultColor.green}
+          //   defaultValue={defaultColor.green}
           value={green}
           onChange={(event) => {
-            setGreen(parseInt(event.target.value));
+            setGreen(event.target.value);
           }}
           onBlur={(event) => {
-            setGreen(parseInt(event.target.value));
-            setHex(rgb_to_hex(red, green, blue));
+            try {
+              checkInput(green);
+              setHex(rgb_to_hex(red, green, blue));
+              setColor(rgb_to_hex(red, green, blue));
+            } catch (error) {
+              console.log(error);
+              setError(true);
+              setGreen(hex_to_rgb(color).green.toString());
+            }
           }}
         />
       </div>
@@ -139,14 +192,21 @@ function RGBInput({
         <div className="w-[58px] text-blue font-main text-[20px]">Blue</div>
         <input
           className="h-[40px] w-[73px] px-[20px] inputfield text-main font-control font-bold text-[20px] text-right border-blue"
-        //   defaultValue={defaultColor.blue}
+          //   defaultValue={defaultColor.blue}
           value={blue}
           onChange={(event) => {
-            setBlue(parseInt(event.target.value));
+            setBlue(event.target.value);
           }}
           onBlur={(event) => {
-            setBlue(parseInt(event.target.value));
-            setHex(rgb_to_hex(red, green, blue));
+            try {
+              checkInput(blue);
+              setHex(rgb_to_hex(red, green, blue));
+              setColor(rgb_to_hex(red, green, blue));
+            } catch (error) {
+              console.log(error);
+              setError(true);
+              setBlue(hex_to_rgb(color).blue.toString());
+            }
           }}
         />
       </div>
@@ -155,6 +215,7 @@ function RGBInput({
 }
 
 function HexInput({
+  rgb_to_hex,
   hex_to_rgb,
   defaultHex,
   hex,
@@ -162,7 +223,15 @@ function HexInput({
   setRed,
   setGreen,
   setBlue,
+  color,
+  setColor,
+  setError,
 }) {
+  function checkInput(str) {
+    if (str.length !== 6 || /[^0-9a-fA-F]/.test(str))
+      throw new InvalidHexFormat();
+  }
+
   return (
     <div className="flex flex-col items-center">
       <div className="textformat-control text-[20px]">Hexadecimal code</div>
@@ -172,17 +241,24 @@ function HexInput({
         </div>
         <input
           className="h-[40px] w-[95px] px-[15px] inputfield text-main font-control font-bold text-[20px] text-right border-main"
-        //   defaultValue={defaultHex}
+          //   defaultValue={defaultHex}
           value={hex}
           onChange={(event) => {
             setHex(event.target.value);
           }}
           onBlur={(event) => {
-            setHex(event.target.value);
-            const color = hex_to_rgb(hex);
-            setRed(color.red);
-            setGreen(color.green);
-            setBlue(color.blue);
+            try {
+              checkInput(hex);
+              setColor(hex);
+              const res = hex_to_rgb(hex);
+              setRed(res.red.toString());
+              setGreen(res.green.toString());
+              setBlue(res.blue.toString());
+            } catch (error) {
+              console.log(error);
+              setError(true);
+              setHex(color);
+            }
           }}
         />
       </div>
