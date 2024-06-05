@@ -4,7 +4,7 @@ import DateInputField from "/src/components/history-statistics/DateInputField";
 import LineChart from "/src/components/history-statistics/LineChart";
 
 export default function StatisticsPageLayout({ title, data, unit }) {
-  const defaultDate = new Date("2024-04-03T00:00:00");
+  const defaultDate = new Date("2024-05-10T00:00:00");
   // console.log(defaultDate);
   // console.log(defaultDate.getDate().toString().padStart(2, "0"));
   // console.log((defaultDate.getMonth() + 1).toString().padStart(2, "0"));
@@ -84,10 +84,11 @@ export default function StatisticsPageLayout({ title, data, unit }) {
 
 function findDate(data, displayDate) {
   for (let i = 0; i < data.length; i++) {
+    const iDate = new Date(data[i].date)
     if (
-      data[i].date.getDate() === displayDate.getDate() &&
-      data[i].date.getMonth() === displayDate.getMonth() &&
-      data[i].date.getYear() === displayDate.getYear()
+      iDate.getDate() === displayDate.getDate() &&
+      iDate.getMonth() === displayDate.getMonth() &&
+      iDate.getYear() === displayDate.getYear()
     ) {
       console.log('Match: ' + data[i])
       return data[i].data;
